@@ -19,14 +19,14 @@
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Navbar -->
+    <!-- navbar -->
     <nav class="bg-white border-b border-gray-200 fixed w-full z-20 top-0 start-0">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <span class="self-center text-2xl font-semibold whitespace-nowrap text-blue-600">Cifrados Clásicos</span>
             </a>
             
-            <!-- Mobile menu button -->
+            <!-- mobile menu button -->
             <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-dropdown" aria-expanded="false">
                 <span class="sr-only">Abrir menú</span>
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -34,7 +34,7 @@
                 </svg>
             </button>
             
-            <!-- Menu items -->
+            <!-- menu items -->
             <div class="hidden w-full lg:block lg:w-auto" id="navbar-dropdown">
                 <ul class="flex flex-col font-medium p-4 lg:p-0 mt-4 border border-gray-100 rounded-lg lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 lg:bg-white">
                     <li>
@@ -43,7 +43,7 @@
                         </a>
                     </li>
                     
-                    <!-- Dropdown Cifrados -->
+                    <!-- dropdown de los cifrados -->
                     <li>
                         <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-600 lg:p-0 lg:w-auto {{ request()->routeIs('polybios.*') || request()->routeIs('cesar.*') || request()->routeIs('vigenere.*') ? 'text-blue-600' : '' }}">
                             Cifrados 
@@ -52,7 +52,7 @@
                             </svg>
                         </button>
                         
-                        <!-- Dropdown menu -->
+                        <!-- dropdown menu -->
                         <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
                             <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                                 <li>
@@ -79,12 +79,12 @@
         </div>
     </nav>
 
-    <!-- Main content -->
+    <!-- main content -->
     <main class="pt-20">
         @yield('content')
     </main>
     
-    <!-- Footer -->
+    <!-- footer -->
     <footer class="bg-white border-t border-gray-200 mt-12">
         <div class="max-w-screen-xl mx-auto p-4 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
@@ -105,7 +105,7 @@
         </div>
     </footer>
 
-    <!-- Flowbite JS -->
+    <!-- flowbite js -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 </body>
 </html>

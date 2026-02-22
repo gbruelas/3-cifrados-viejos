@@ -14,11 +14,12 @@ Route::prefix('polybios')->name('polybios.')->group(function () {
     Route::post('/decrypt', [PolybiosController::class, 'decrypt'])->name('decrypt');
 });
 
-// Placeholders para los otros cifrados
+// César
 Route::get('/cesar', function () {
     return view('cesar.index');
 })->name('cesar.index');
 
+// Vigenere
 Route::get('/vigenere', function () {
     return view('vigenere.index');
 })->name('vigenere.index');

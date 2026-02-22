@@ -48,7 +48,22 @@ class PolybiosController extends Controller
         ]);
 
         $text = $request->input('text');
+        
+        // verificar si el texto contiene numeros
+        if (preg_match('/[0-9]/', $text)) {
+            return redirect()->route('polybios.index')
+                ->with('error', 'El texto no puede contener números. Solo se permiten letras y espacios.')
+                ->withInput();
+        }
+        
         $encrypted = $this->encryptText($text);
+        
+        // verificar si después del procesamiento quedó texto vacio
+        if (empty($encrypted)) {
+            return redirect()->route('polybios.index')
+                ->with('error', 'El texto no contiene letras válidas para cifrar (A-Z)')
+                ->withInput();
+        }
         
         return redirect()->route('polybios.index')
             ->with('success', 'Texto cifrado correctamente')
@@ -65,7 +80,31 @@ class PolybiosController extends Controller
         ]);
 
         $cipher = $request->input('cipher');
+        
+        // verificar que solo contenga numeros y espacios
+        if (!preg_match('/^[0-9\s]+$/', $cipher)) {
+            return redirect()->route('polybios.index')
+                ->with('error', 'El texto cifrado solo puede contener números y espacios.')
+                ->withInput();
+        }
+        
+        // verificar el formato de los pares (2 digitos separados por espacios)
+        $pairs = explode(' ', trim($cipher));
+        foreach ($pairs as $pair) {
+            if (!empty($pair) && (strlen($pair) != 2 || !is_numeric($pair))) {
+                return redirect()->route('polybios.index')
+                    ->with('error', 'Formato inválido. Cada par debe ser de 2 dígitos (ejemplo: 11 12 13)')
+                    ->withInput();
+            }
+        }
+        
         $decrypted = $this->decryptText($cipher);
+        
+        if (empty($decrypted)) {
+            return redirect()->route('polybios.index')
+                ->with('error', 'No se pudo descifrar el texto. Verifica que los números sean válidos (11-55)')
+                ->withInput();
+        }
         
         return redirect()->route('polybios.index')
             ->with('success', 'Texto descifrado correctamente')
@@ -74,12 +113,16 @@ class PolybiosController extends Controller
             ->with('action', 'decrypt');
     }
 
-    //metodo interno para cifrar el txeto
+    //metodo interno para cifrar el texto
     private function encryptText($text)
     {
         $text = strtoupper($text);
         $text = str_replace('J', 'I', $text); //reemplazar J por I
         $text = preg_replace('/[^A-Z]/', '', $text); //eliminar caracteres no alfabeticos
+        
+        if (empty($text)) {
+            return '';
+        }
         
         $result = [];
         
@@ -105,8 +148,11 @@ class PolybiosController extends Controller
                 $row = (int)$pair[0];
                 $col = (int)$pair[1];
                 
-                if (isset($this->grid[$row][$col])) {
-                    $result .= $this->grid[$row][$col];
+                //validar que las coordenadas estén dentro del rango
+                if ($row >= 1 && $row <= $this->size && $col >= 1 && $col <= $this->size) {
+                    if (isset($this->grid[$row][$col])) {
+                        $result .= $this->grid[$row][$col];
+                    }
                 }
             }
         }

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="max-w-screen-xl mx-auto px-4">
-    <!-- Header -->
+    <!-- header -->
     <div class="mb-8">
         <h1 class="text-3xl font-bold text-gray-900">Cifrado de Polybios</h1>
         <p class="text-gray-600 mt-2">
@@ -15,6 +15,23 @@
     @if(session('success'))
         <div class="mb-4 p-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
             <span class="font-medium">{{ session('success') }}</span>
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="mb-4 p-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+            <span class="font-medium">{{ session('error') }}</span>
+        </div>
+    @endif
+
+    @if($errors->any())
+        <div class="mb-4 p-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+            <span class="font-medium">Error:</span>
+            <ul class="mt-1 list-disc list-inside">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
     @endif
 
