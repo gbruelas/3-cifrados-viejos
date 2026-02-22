@@ -16,14 +16,14 @@ Route::prefix('polybios')->name('polybios.')->group(function () {
 });
 
 // César
-// Route::get('/cesar', function () {
-//     return view('cesar.index');
-// })->name('cesar.index');
+Route::prefix('cesar')->name('cesar.')->group(function () {
+    Route::get('/', [CesarController::class, 'index'])->name('index');
+    Route::post('/encrypt', [CesarController::class, 'encrypt'])->name('encrypt');
+    Route::post('/decrypt', [CesarController::class, 'decrypt'])->name('decrypt');
+    Route::get('/info', [CesarController::class, 'info'])->name('info');
+});
 
 // Vigenere
 Route::get('/vigenere', function () {
     return view('vigenere.index');
 })->name('vigenere.index');
-Route::post('/cesar', [CesarController::class, 'procesar'])->name('cesar.procesar');
-
-Route::post('/procesar', [CesarController::class, 'procesar'])->name('cesar.procesar');
