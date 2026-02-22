@@ -8,4 +8,4 @@ Route::get('/', function () {
 });
 
 Route::get('/cesar', [CesarController::class, 'index']);
-Route::post('/cesar', [CesarController::class, 'cifrar']);
+Route::post('/procesar', [CesarController::class, 'procesar'])->name('cesar.procesar');

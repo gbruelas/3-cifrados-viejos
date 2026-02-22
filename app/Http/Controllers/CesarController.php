@@ -11,30 +11,46 @@ class CesarController extends Controller
         return view('cesar');
     }
 
-    public function cifrar(Request $request)
+    public function procesar(Request $request)
     {
-        $texto = $request->input('texto');
-        $desplazamiento = (int) $request->input('desplazamiento');
+        $texto = strtolower($request->input('texto'));
+        $desplazamiento = (int)$request->input('desplazamiento');
+        $direccion = $request->input('direccion');
+        $accion = $request->input('accion');
 
-        $resultado = $this->cifradoCesar($texto, $desplazamiento);
+        if ($direccion == 'izquierda') {
+            $desplazamiento = -$desplazamiento;
+        }
 
-        return view('cesar', [
-            'resultado' => $resultado
-        ]);
+        if ($accion == 'descifrar') {
+            $desplazamiento = -$desplazamiento;
+        }
+
+        $resultado = $this->cifrarCesar($texto, $desplazamiento);
+
+        return view('cesar', compact('resultado'));
     }
 
-    private function cifradoCesar($texto, $desplazamiento)
+    private function cifrarCesar($texto, $desplazamiento)
     {
         $resultado = '';
+        $alfabeto = 'abcdefghijklmnopqrstuvwxyz';
+        $longitud = strlen($alfabeto);
 
-        foreach (str_split($texto) as $char) {
-            if (ctype_alpha($char)) {
-                $ascii = ord($char);
-                $base = ctype_upper($char) ? ord('A') : ord('a');
+        for ($i = 0; $i < strlen($texto); $i++) {
+            $letra = $texto[$i];
 
-                $resultado .= chr(($ascii - $base + $desplazamiento) % 26 + $base);
+            if (strpos($alfabeto, $letra) !== false) {
+                $posicion = strpos($alfabeto, $letra);
+                $nuevaPosicion = ($posicion + $desplazamiento) % $longitud;
+
+                if ($nuevaPosicion < 0) {
+                    $nuevaPosicion += $longitud;
+                }
+
+                $resultado .= $alfabeto[$nuevaPosicion];
             } else {
-                $resultado .= $char;
+                $resultado .= $letra;
             }
         }
 
