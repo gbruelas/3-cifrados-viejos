@@ -3,6 +3,7 @@
 use App\Http\Controllers\PolybiosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CesarController;
+use App\Http\Controllers\VigenereController;
 
 Route::get('/', function () {
     return view('home');
@@ -24,6 +25,9 @@ Route::prefix('cesar')->name('cesar.')->group(function () {
 });
 
 // Vigenere
-Route::get('/vigenere', function () {
-    return view('vigenere.index');
-})->name('vigenere.index');
+Route::prefix('vigenere')->name('vigenere.')->group(function () {
+    Route::get('/', [VigenereController::class, 'index'])->name('index');
+    Route::post('/encrypt', [VigenereController::class, 'encrypt'])->name('encrypt');
+    Route::post('/decrypt', [VigenereController::class, 'decrypt'])->name('decrypt');
+    Route::get('/tabla', [VigenereController::class, 'tabla'])->name('tabla');
+});

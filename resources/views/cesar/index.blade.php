@@ -73,7 +73,7 @@
                             <p class="text-sm font-medium text-gray-700">Cifrar:</p>
                             <p class="text-xs text-gray-500">Texto: HOLA MUNDO</p>
                             <p class="text-xs text-gray-500">Desplazamiento: 3 (derecha)</p>
-                            <p class="text-sm font-mono text-blue-600 mt-1">KROD PXQGR</p>
+                            <p class="text-sm font-mono text-green-600 mt-1">KROD PXQGR</p>
                         </div>
                         <div class="bg-gray-50 p-3 rounded-lg">
                             <p class="text-sm font-medium text-gray-700">Descifrar:</p>
@@ -129,7 +129,7 @@
             <div class="bg-white rounded-lg border border-gray-200 shadow-md">
                 <div class="border-b border-gray-200">
                     <nav class="flex -mb-px">
-                        <button onclick="switchTab('encrypt')" id="tab-encrypt-btn" class="py-4 px-6 text-sm font-medium border-b-2 border-blue-600 text-blue-600" type="button">
+                        <button onclick="switchTab('encrypt')" id="tab-encrypt-btn" class="py-4 px-6 text-sm font-medium border-b-2 border-green-600 text-green-600" type="button">
                             Cifrar Texto
                         </button>
                         <button onclick="switchTab('decrypt')" id="tab-decrypt-btn" class="py-4 px-6 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" type="button">
@@ -197,7 +197,7 @@
                             </div>
                             
                             <div class="flex items-center justify-between">
-                                <button type="submit" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                                <button type="submit" class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5">
                                     Cifrar Texto
                                 </button>
                                 <button type="reset" class="text-gray-700 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5">
@@ -302,11 +302,11 @@ function switchTab(tab) {
     //activar el tab seleccionado
     if (tab === 'encrypt') {
         document.getElementById('encrypt-form').classList.remove('hidden');
-        document.getElementById('tab-encrypt-btn').classList.add('border-blue-600', 'text-blue-600');
+        document.getElementById('tab-encrypt-btn').classList.add('border-green-600', 'text-green-600');
         document.getElementById('tab-encrypt-btn').classList.remove('border-transparent', 'text-gray-500');
     } else {
         document.getElementById('decrypt-form').classList.remove('hidden');
-        document.getElementById('tab-decrypt-btn').classList.add('border-blue-600', 'text-blue-600');
+        document.getElementById('tab-decrypt-btn').classList.add('border-green-600', 'text-green-600');
         document.getElementById('tab-decrypt-btn').classList.remove('border-transparent', 'text-gray-500');
     }
 }

@@ -185,7 +185,7 @@
                             </div>
                             
                             <div class="flex items-center justify-between">
-                                <button type="submit" class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5">
+                                <button type="submit" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
                                     Descifrar Texto
                                 </button>
                                 <button type="reset" class="text-gray-700 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5">
@@ -212,7 +212,7 @@
                         <p class="font-medium text-gray-700 mb-2">Descifrar:</p>
                         <ul class="space-y-2 text-sm">
                             <li><span class="text-gray-500">Cifrado:</span> <code class="bg-gray-100 px-2 py-1 rounded">11 12 13 14 15</code></li>
-                            <li><span class="text-gray-500">Texto:</span> <code class="bg-green-100 text-green-800 px-2 py-1 rounded">ABCDE</code></li>
+                            <li><span class="text-gray-500">Texto:</span> <code class="bg-blue-100 text-blue-800 px-2 py-1 rounded">ABCDE</code></li>
                         </ul>
                     </div>
                 </div>
