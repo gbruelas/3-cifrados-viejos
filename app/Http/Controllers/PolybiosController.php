@@ -36,8 +36,7 @@ class PolybiosController extends Controller
     //muestra el formulario de cifrado/descifrado    
     public function index()
     {
-        $grid = $this->displayGrid();
-        return view('polybios.index', compact('grid'));
+        return view('polybios.index');
     }
 
     //procesa el cifrado
@@ -158,29 +157,6 @@ class PolybiosController extends Controller
         }
         
         return $result;
-    }
-
-    //genera la tabla html de la cuadricula
-    private function displayGrid()
-    {
-        $html = '<table class="table table-bordered text-center">';
-        $html .= '<tr><th></th>';
-        for ($i = 1; $i <= $this->size; $i++) {
-            $html .= "<th>$i</th>";
-        }
-        $html .= '</tr>';
-        
-        for ($row = 1; $row <= $this->size; $row++) {
-            $html .= "<tr><th>$row</th>";
-            for ($col = 1; $col <= $this->size; $col++) {
-                $html .= "<td>" . $this->grid[$row][$col] . "</td>";
-            }
-            $html .= '</tr>';
-        }
-        
-        $html .= '</table>';
-        
-        return $html;
     }
 
 }
