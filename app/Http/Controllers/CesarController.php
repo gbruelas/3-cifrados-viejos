@@ -125,13 +125,4 @@ class CesarController extends Controller
         return $resultado;
     }
 
-    //metodo para obtener información del cifrado
-    public function info()
-    {
-        $alfabeto = str_split($this->alfabeto);
-        return response()->json([
-            'alfabeto' => $alfabeto,
-            'longitud' => $this->longitud
-        ]);
-    }
 }

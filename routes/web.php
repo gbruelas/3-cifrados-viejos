@@ -21,7 +21,6 @@ Route::prefix('cesar')->name('cesar.')->group(function () {
     Route::get('/', [CesarController::class, 'index'])->name('index');
     Route::post('/encrypt', [CesarController::class, 'encrypt'])->name('encrypt');
     Route::post('/decrypt', [CesarController::class, 'decrypt'])->name('decrypt');
-    Route::get('/info', [CesarController::class, 'info'])->name('info');
 });
 
 // Vigenere
